@@ -1,0 +1,6 @@
+{
+	"appId": "com.iota.trackerapp",
+	"appName": "iota balance tracker",
+	"webDir": "public",
+	"bundledWebRuntime": false
+}
