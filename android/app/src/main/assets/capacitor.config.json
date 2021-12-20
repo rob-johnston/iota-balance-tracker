@@ -1,0 +1,6 @@
+{
+	"appId": "com.iota.mobile",
+	"appName": "iota-balance-app",
+	"webDir": "public",
+	"bundledWebRuntime": true
+}

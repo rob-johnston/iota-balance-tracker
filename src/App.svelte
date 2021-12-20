@@ -1,24 +1,27 @@
-<script>
-	export let name;
+<script lang="ts">
+	import Navbar from "./components/Navbar.svelte";
+	import List from "./components/List.svelte";
+	const title = "Iota balance ticker";
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<h1>{@html title}</h1>
+	<Navbar />
+	<List />
 </main>
 
 <style>
 	main {
 		text-align: center;
-		padding: 1em;
+		padding: 2em;
 		max-width: 240px;
 		margin: 0 auto;
 	}
 
 	h1 {
-		color: #ff3e00;
+		color: #ffffff;
 		text-transform: uppercase;
-		font-size: 4em;
+		font-size: 3em;
 		font-weight: 100;
 	}
 
