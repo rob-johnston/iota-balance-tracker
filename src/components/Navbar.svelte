@@ -2,14 +2,14 @@
     import { Icon } from "@specialdoom/proi-ui-icons";
     import { fetchSingleBalance } from "../api/api";
     import { iotaAddresses } from "../store/store";
-    import { exportCSVFile, showToast } from "../native-brides/exportCSV";
+    import { exportCSVFile, showToast } from "../native-bridges/native-bridges";
 
     let address = "";
 
     async function handleSubscribeToAddress() {
         address = address.trim();
         if ($iotaAddresses[address]) {
-            showToast("Address is already added");
+            await showToast("Address is already added");
             address = "";
             return;
         }
@@ -31,6 +31,7 @@
         placeholder="Enter IOTA Address"
     />
     <button
+        type="submit"
         disabled={address.length === 0}
         color="gray"
         light

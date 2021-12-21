@@ -1,15 +1,11 @@
 <script>
     import { iotaAddresses } from "../store/store";
     import { onMount } from "svelte";
-    import { SingleNodeClient } from "@iota/iota.js";
     import { fetchSingleBalance } from "../api/api";
     import LineItem from "./LineItem.svelte";
+    import { FETCH_INTERVAL } from "../constants";
 
     onMount(() => {
-        const client = new SingleNodeClient(
-            "https://chrysalis-nodes.iota.org/"
-        );
-
         async function fetchAll() {
             for (const key of Object.keys($iotaAddresses)) {
                 const balance = await fetchSingleBalance(key);
@@ -19,7 +15,7 @@
             }
         }
         fetchAll();
-        const interval = setInterval(fetchAll, 5000);
+        const interval = setInterval(fetchAll, FETCH_INTERVAL);
         return () => clearInterval(interval);
     });
 </script>

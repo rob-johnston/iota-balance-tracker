@@ -1,9 +1,8 @@
 <script>
     import { slide } from "svelte/transition";
     import { spring } from "svelte/motion";
-    import { itrash, isave } from "../Hicons";
+    import { itrash } from "../Hicons";
     import SvgIcon from "../SvgIcon.svelte";
-    import { Icon } from "@specialdoom/proi-ui-icons";
     import { iotaAddresses } from "../store/store";
     import { customSlide } from "../util/customSlide";
 
@@ -34,23 +33,21 @@
     }
 
     function deleteContact(id) {
-        console.log("trying to delete.. ", id);
         coords.set({ x: 0, y: 0 }, { hard: true });
-
-        console.log($iotaAddresses);
         delete $iotaAddresses[id];
         $iotaAddresses = $iotaAddresses;
-        console.log($iotaAddresses);
-        console.log(Object.entries($iotaAddresses).length);
     }
 
-    $: side = $coords.x >= (w / 2) * 1 ? "left" : "right";
-    $: side === "left" ? deleteContact(current) : "";
+    // delete the item if we swipe far enough
+    $: {
+        if ($coords.x >= (w / 2) * 1) {
+            deleteContact(current);
+        }
+    }
 </script>
 
 <div class="list-item" out:slide={{ duration: 500 }}>
     <SvgIcon d={itrash} side="left" />
-    <SvgIcon d={isave} side="right" />
     <div
         class="container"
         bind:offsetWidth={w}
@@ -87,13 +84,14 @@
         background: linear-gradient(
             90deg,
             rgba(249, 7, 7, 1) 23%,
-            rgba(0, 255, 59, 1) 100%
+            rgb(29, 29, 87) 100%
         );
         width: 100%;
         height: 70px;
         margin: 0.25rem;
         user-select: none;
         pointer-events: auto;
+        border-radius: 1rem;
     }
 
     .container {
@@ -103,7 +101,9 @@
         align-items: center;
         width: 100%;
         height: 100%;
-        background-color: #e2e8f0;
+        background-color: #3168b1;
+        border-radius: 1rem;
+        overflow: auto;
     }
     .container:active {
         cursor: grabbing;
@@ -112,9 +112,15 @@
         pointer-events: none;
     }
     .address {
-        font-weight: 700;
+        font-weight: 500;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
     .balance {
+        padding-left: 1rem;
+        float: left;
+        font-weight: 700;
+        font-size: 4vh;
         color: #718096;
     }
 </style>
