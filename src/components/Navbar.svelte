@@ -1,14 +1,15 @@
 <script>
     import { Icon } from "@specialdoom/proi-ui-icons";
-    import { fetchSingleBalance } from "../api";
+    import { fetchSingleBalance } from "../api/api";
     import { iotaAddresses } from "../store/store";
     import { exportCSVFile, showToast } from "../native-brides/exportCSV";
 
     let address = "";
 
     async function handleSubscribeToAddress() {
+        address = address.trim();
         if ($iotaAddresses[address]) {
-            console.log("already added");
+            showToast("Address is already added");
             address = "";
             return;
         }
@@ -18,10 +19,7 @@
     }
 
     function handleExportCSV() {
-        // TODO
-        console.log("lets export the store to a csv file (:");
-        exportCSVFile();
-        showToast("File downloaded to Documents folder");
+        exportCSVFile($iotaAddresses);
     }
 </script>
 

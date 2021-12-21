@@ -4,6 +4,11 @@
 	const title = "Iota balance ticker";
 </script>
 
+<!-- <svelte:head>
+	<script
+		src="https://unpkg.com/@ionic/pwa-elements@latest/dist/ionicpwaelements/ionicpwaelements.esm.js"></script>
+</svelte:head> -->
+
 <main>
 	<h1>{@html title}</h1>
 	<Navbar />

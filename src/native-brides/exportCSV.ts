@@ -1,37 +1,25 @@
 import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 import { Toast } from '@capacitor/toast';
-import converter from 'json-2-csv';
+import { json2csvAsync } from 'json-2-csv';
 import { iotaAddresses } from '../store/store';
 
-
-export const exportCSVFile = async () => {
+export const exportCSVFile = async (data: Object[]) => {
     try {
-        const formattedData = Object.entries(iotaAddresses).map(([address, balance]) => ({ address, balance }))
-        const csv = await converter.json2csvAsync(formattedData)
-
-        // // print CSV string
-        // console.log(csv);
-        // const foo = await Filesystem.stat({
-        //     directory: Directory.Documents,
-        //     path: 'iotabalances.csv'
-        // })
-        // console.log('Stat: ', foo)
-
-        const contents = await Filesystem.writeFile({
+        const formattedData = Object.entries(data).map(([address, balance]) => ({ address, balance }))
+        const csv = await json2csvAsync(formattedData)
+        console.log(csv)
+        await Filesystem.writeFile({
             path: 'iotabalances.csv',
             data: csv,
             directory: Directory.Documents,
             encoding: Encoding.UTF8,
-            recursive: true
         })
-        console.log(contents)
-        console.log('csv successfully saved')
+        await showToast("File downloaded to Documents folder");
+
     } catch (e) {
-        console.log('error exporting csv')
-        console.log(e)
+        await showToast('Error exporting file')
     }
 };
-
 
 export const showToast = async (message: string) => {
     await Toast.show({
