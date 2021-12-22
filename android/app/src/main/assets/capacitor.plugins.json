@@ -6,5 +6,9 @@
 	{
 		"pkg": "@capacitor/toast",
 		"classpath": "com.capacitorjs.plugins.toast.ToastPlugin"
+	},
+	{
+		"pkg": "@rhdj/save-csv",
+		"classpath": "com.iotabalanceticker.savecsv.SaveCSVPlugin"
 	}
 ]
