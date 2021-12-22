@@ -25,6 +25,7 @@
 
 <div class="navBar">
     <input
+        aria-label="Field to add the address you want to track"
         class="input"
         bind:value={address}
         type="text"
@@ -32,6 +33,7 @@
     />
     <button
         type="submit"
+        aria-label="Add the current address to the ticker"
         disabled={address.length === 0}
         color="gray"
         light
@@ -39,6 +41,7 @@
     >
     <button
         disabled={Object.keys($iotaAddresses).length === 0}
+        aria-label="Export the current items to a csv file"
         color="gray"
         light
         on:click={handleExportCSV}><Icon type="download" /></button

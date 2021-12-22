@@ -7,3 +7,5 @@ export const MESSAGES = {
     FILE_DOWNLOADED: 'File downloaded to Documents folder',
     EXPORT_ERROR: 'Error while exporting csv file',
 }
+
+export const TITLE = 'Iota balance ticker'

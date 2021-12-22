@@ -1,16 +1,11 @@
 <script lang="ts">
 	import Navbar from "./components/Navbar.svelte";
 	import List from "./components/List.svelte";
-	const title = "Iota balance ticker";
+	import { TITLE } from "./constants";
 </script>
 
-<!-- <svelte:head>
-	<script
-		src="https://unpkg.com/@ionic/pwa-elements@latest/dist/ionicpwaelements/ionicpwaelements.esm.js"></script>
-</svelte:head> -->
-
 <main>
-	<h1>{@html title}</h1>
+	<h1>{TITLE}</h1>
 	<Navbar />
 	<List />
 </main>

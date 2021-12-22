@@ -74,6 +74,7 @@
     </div>
 </div>
 
+<!-- TODO: make everything look nicer -->
 <style>
     :global(body) {
         overflow-x: hidden;
@@ -115,12 +116,13 @@
         font-weight: 500;
         padding-left: 1rem;
         padding-right: 1rem;
+        color: hsl(215, 100%, 94%);
     }
     .balance {
         padding-left: 1rem;
         float: left;
         font-weight: 700;
         font-size: 4vh;
-        color: #718096;
+        color: #f2f7ff;
     }
 </style>
